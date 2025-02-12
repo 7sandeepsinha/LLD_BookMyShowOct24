@@ -1,3 +1,67 @@
 City
 id  name    createdAt   updatedAt   createdBy   updatedBy
 1   MUMBAI    10-02-24    12-02-24    Sandeep     Raushan
+
+
+Dependency Injection
+
+While creating TicketService object, we need to inject TicketRepo object
+
+1.Initialise TicketRepo object -> @Repository
+2. Mention requirement in TicketService class -> @Autowired
+3. Initialise TicketService class -> @Service
+
+
+API -> Application Programming Interface
+https://www.scaler.com/academy/instructor-dashboard/
+
+domain/academy/instructor-dashboard -> FE hits this URL, and gets some response
+domain/academy/instructor-dashboard/batchId/classes -> FE hits this URL, gets all classes
+for this batchId in response.
+
+FE
+buttons -> click -> action -> URLs[APIs] -> BE will do some processing and return back
+with some response.
+
+
+BE
+actions - tagged - URLs
+
+
+General operations - CRUD
+GET - read
+POST - create
+PUT - update
+DELETE - delete
+
+
+<HTML> ---- XML format
+</HTML>
+
+<Student>
+<Name>Sandeep</Name>
+<id> 1 </id>
+<roll> 1 </roll>
+</Student>
+
+JSON
+{
+    "name" : "Sandeep",
+    "id" : 1,
+    "roll" : 1
+}
+
+1. Initial model and DB tables setup done.
+2. All repositories are created
+4. Insert some data ->
+    1. APIs for all CRUD operations and create the data.
+    2. Manually insert via method
+    3. Manually insert via SQL queries
+3. Book ticket
+
+A service of a certain model, will only to its own repo, and no other repo.
+It will always talk to service of other models.
+
+CityService -> CityRepo ---- OK
+CityService -> TheatreRepo ---- NOT OK
+CityService -> TheatreService ---- OK

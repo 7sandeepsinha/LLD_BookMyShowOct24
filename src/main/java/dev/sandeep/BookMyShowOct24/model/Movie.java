@@ -11,3 +11,9 @@ public class Movie extends BaseModel{
     private String name;
     private String language;
 }
+/*
+    {
+        "name" : "Titanic",
+        "language" : "English"
+    }
+ */
