@@ -65,3 +65,30 @@ It will always talk to service of other models.
 CityService -> CityRepo ---- OK
 CityService -> TheatreRepo ---- NOT OK
 CityService -> TheatreService ---- OK
+
+
+Synchronisation -
+DB - Isolation Levels
+Read Uncommitted - no locking, all open to read...fastest...high chances of inconsistency.
+Read Committed - we can only read committed data.... read uncommitted > speed > repeatable read....lesser inconsistency than read uncommitted but chances of phantom read.
+Repeatable Read - new copy of data is used until the entire completes.
+Serializable - no parallel transaction, transactions on a particular row can only happen sequentially.
+
+Serializable ---- performance -> worst, consistency -> best.
+
+
+ShowSeat
+ShowSeatId      SeatId      ShowId      Status
+1               1           1           Available || clicked to book
+2               2           1           Available || clicked to book
+3               3           1           Available
+4               4           1           Available
+5               5           1           Available
+
+Serializable ----
+we cant keep the rows locked until the entire payment transaction completes
+
+need to bring an intermediary stage ---- AVAILABLE -> selected 2 seats for booking -> payment [5-10mins] -> seats are booked
+                                         AVAILABLE -> serialization lock until payments complete -> BOOKED
+
+Another option - AVAILABLE -> serialization lock -> LOCKED -> serialisation lock is removed -> user completes payment -> BOOKED

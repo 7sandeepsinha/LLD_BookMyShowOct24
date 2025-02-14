@@ -72,6 +72,7 @@ public class InitialisationService {
         show.setMovie(movie);
         show.setAuditorium(auditorium);
         show.setLanguage("Bhojpuri");
+
         show.setShowStatus(ShowStatus.YET_TO_START);
         show.setStartTime(LocalDateTime.now()); // just an assumption to create data
         show.setEndTime(LocalDateTime.now());  // just an assumption to create data
